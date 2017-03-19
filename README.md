@@ -2,4 +2,4 @@
 
 地址：[https://donche.github.io/](https://donche.github.io/)
 
-根据[http://yansu.org](yansu)博客改装而成
+根据[yansu](http://yansu.org)博客改装而成
