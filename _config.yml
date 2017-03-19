@@ -1,0 +1,33 @@
+# Site settings
+title: 没人知道的博客
+email: heavysleeper@live.cn
+description: > # this means to ignore newlines until "baseurl:"
+  就这么开始了
+baseurl: "" # the subpath of your site, e.g. /blog/
+rss_url: /pages/feed.xml
+author: Donche
+
+# Sidebar filter
+# Choose 'tag' or 'category' as filter in sidebar.
+filter: 'category'
+recent_num: 20
+
+# Social account
+github: Donche
+avatar: http://7u2ho6.com1.z0.glb.clouddn.com/site-avatar.png
+
+# Build settings
+permalink: /:year/:month/:day/:title.html
+markdown: kramdown
+highlighter: rouge
+mathjax: disabled
+sass:
+  style: compressed
+
+# Jekyll Plugin
+# https://help.github.com/articles/adding-jekyll-plugins-to-a-github-pages-site/
+gems:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+
