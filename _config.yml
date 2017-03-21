@@ -14,7 +14,7 @@ recent_num: 20
 
 # Social account
 github: Donche
-avatar: http://7u2ho6.com1.z0.glb.clouddn.com/site-avatar.png
+avatar: /assets/img/i.jpg
 
 # Build settings
 permalink: /:year/:month/:day/:title.html
