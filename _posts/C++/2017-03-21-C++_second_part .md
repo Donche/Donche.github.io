@@ -257,6 +257,7 @@ c[k]|返回关键字为k的元素；如k不在c中，添加一个关键字为k�
 c.at(k)|访问关键字为k的元素，带参数检查；若k不在c中，抛出一个out_of_range异常   
 
 set:
+
 操作|简介
 ---|---
 c.find(k)|返回一个迭代器，指向第一个关键字为k的元素，若k不在容器中，则返回尾后迭代器
@@ -264,14 +265,16 @@ c.count(k)|返回关键字等于k的元素的数量。对于不允许重复关�
 c.lower_bound(k)|返回一个迭代器，指向第一个关键字不小于k的元素
 c.upper_bound(k)|返回一个迭代器，指向第一个关键字大于k的元素
 c.equal_range(k)|返回一个迭代器pair，表示股那件子等于k的元素的范围。若k不存在，pair的两个成员均等于c.end()
+
 **举个例子，使用equal_range打印匹配元素**
 ```c++
 for (auto pos = authors.equal_range(search_item);
       pos.first != pos.second; ++pos.first)
       cout << pos.first->second << endl;
 ```
-### 无序容器
-无序容器管理操作：
+
+### 4.3无序容器
+无序容器管理操作：     
 
 桶接口|
 ---|---
@@ -289,40 +292,50 @@ c.load_factor()|每个桶的平均元素数量，返回float值
 c.max_load_factor()|c试图维护的平均桶的大小，返回float值。c会在需要时添加新的桶，以使得load_factor <= max_load_factor
 c.rehash(n)|重组存储，使得bucket_count >= n且bucket_count > size/max_load_factor
 c.reserve(m)|重组存储，使得c可以保存n个元素且不必rehash
+
 * 不能直接定义关键字类型为自定义类类型的无序容器
 
 ## 5.动态内存
 ### 5.1智能指针
-指针类型| memory.h
+
+指针类型|memory.h
 ---|---
 shared_ptr|多个指针指向同一个对象
 unique_ptr|独占所指向的对象
 weak_ptr|伴随类，弱引用，指向shared_ptr所管理的对象
 
-shared_ptr和unique_ptr都支持的操作|
----|---
-shared_ptr<T> sp   unique_ptr<T> up |空智能指针，可以指向类型为T的对象
-p.get()|返回p中保存的指针。要小心使用，若智能指针释放了其对象，返回的指针所指向的对象也就消失了
-swap(p, q)   p.swap(q) |交换p和q中的指针
+
+|shared_ptr和unique_ptr都支持的操作|
+| --- | --- |
+|shared_ptr<T> sp<br>unique_ptr<T> up|空智能指针，可以指向类型为T的对象|
+|p.get()|返回p中保存的指针。要小心使用，若智能指针释放了其对象，返回的指针所指向的对象也就消失了|
+|swap(p, q)<br>p.swap(q)|交换p和q中的指针|
 **shared_ptr独有的操作** |
-make_shared<T>(args)| 返回一个shared_ptr, 指向一个动态分配类型为T的对象，使用args初始化此对象
-shared_ptr<T>p(q)|p是shared_ptr q的拷贝：此操作会递增q中的计数器。q中的指针必须能转换为T*
-p = q|p和q都是shared_ptr， 所保存的指针必须能相互转换。此操作会递减p的引用次数，递增q的引用次数；若p的引用计数变为0，则将其管理的元内存释放
-p.unique()|若p.use_count()为1，返回true;否则返回false
-p.use_count()|返回与p共享对象的智能指针数量；可能很慢，主要用于调试
+|make_shared<T>(args)|返回一个shared_ptr, 指向一个动态分配类型为T的对象，使用args初始化此对象|
+|shared_ptr<T>p(q)|p是shared_ptr q的拷贝：此操作会递增q中的计数器。q中的指针必须能转换为T*|
+|p = q|p和q都是shared_ptr，所保存的指针必须能相互转换。此操作会递减p的引用次数，递增q的引用次数；若p的引用计数变为0，则将其管理的元内存释放|
+|p.unique()|若p.use_count()为1，返回true;否则返回false|
+|p.use_count()|返回与p共享对象的智能指针数量；可能很慢，主要用于调试|
+
+
+
+
+
 **shared_ptr和new结合使用**
 **直接举例子！**
 ```c++
 shared_ptr<int> p1 = new int(1024);//错误，必须使用直接初始化形式
 shared_ptr<int> p2(new int(42));//正确
 ```
-定义和改变shared_ptr的其他方法|
----|---
-shared_ptr<T> p(q)|p管理内置指针q所指向的对象；q必须指向new分配的内存，且能转换为T*类型
-shared_ptr<T> p(u)|p从unique_ptr u那里接管了对象的所有权：将u置为空
-shared_ptr<T> p(q, d)|p接管了内置指针q所指向的对象的所有权。q必须能够转换为T*类型。p将使用可调用对象d来代替delete
-shared_ptr<T> p(p2, d)|p是shared_ptr p2的拷贝，唯一区别是将用可调用对象d来代替delete
-p.reset()<br>p.reset(q)<br>p.reset(q, d)|若p是为唯一指向其对象的shared_ptr, reset会释放此对象。若传递了可选的参数内置指针q，会令p指向q，否则会将p置为空。若还传递了参数d，将会调用d而不是delete来释放q
+
+|定义和改变shared_ptr的其他方法|
+|---|---|
+|shared_ptr<T> p(q)|p管理内置指针q所指向的对象；q必须指向new分配的内存，且能转换为T*类型|
+|shared_ptr<T> p(u)|p从unique_ptr u那里接管了对象的所有权：将u置为空|
+|shared_ptr<T> p(q, d)|p接管了内置指针q所指向的对象的所有权。q必须能够转换为T*类型。p将使用可调用对象d来代替delete|
+|shared_ptr<T> p(p2, d)|p是shared_ptr p2的拷贝，唯一区别是将用可调用对象d来代替delete|
+|p.reset()<br>p.reset(q)<br>p.reset(q, d)|若p是为唯一指向其对象的shared_ptr, reset会释放此对象。若传递了可选的参数内置指针q，会令p指向q，否则会将p置为空。若还传递了参数d，将会调用d而不是delete来释放q|
+
 **智能指针陷阱**
 * 不使用相同的内置指针值初始化（或reset）多个智能指针
 * 不delete get()返回的指针
@@ -330,19 +343,20 @@ p.reset()<br>p.reset(q)<br>p.reset(q, d)|若p是为唯一指向其对象的share
 * 如果你使用get()返回的指针，记住当最后一个对应的智能指针销毁后，你的指针就变为无效了
 * 如果使用的智能指针管理的资源不是new分配的内存，记住传递给他一个删除器
 
-unique_ptr操作|
----|---
-unique_ptr<T> u1<br>unique_ptr<T, D> u2|空unique_ptr，可以指向类型为T的对象，u1会使用delete来释放它的指针；u2会使用一个类型为D的可调用对象来释放它的指针
-unique_ptr<T, D> u(d)|空unique_ptr，指向类型为T的对象，用类型为D的对象d来代替delete
-u.release()|u放弃对指针的控制权，返回指针，并将u置为空
-u.reset()<br>u.reset(q)<br>u.reset(nullptr)|释放u指向的对象<br>如果提供了内置指针q，令u指向这个对象；否则将u置为空
+|unique_ptr操作|
+|---|---|
+|unique_ptr<T> u1<br>unique_ptr<T, D> u2|空unique_ptr，可以指向类型为T的对象，u1会使用delete来释放它的指针；u2会使用一个类型为D的可调用对象来释放它的指针|
+|unique_ptr<T, D> u(d)|空unique_ptr，指向类型为T的对象，用类型为D的对象d来代替delete|
+|u.release()|u放弃对指针的控制权，返回指针，并将u置为空|
+|u.reset()<br>u.reset(q)<br>u.reset(nullptr)|释放u指向的对象<br>如果提供了内置指针q，令u指向这个对象；否则将u置为空|
 
-weak_ptr操作|
----|---
-weak_ptr<T> w|指向类型为T的对象
-weak_ptr<T> w(sp)|与shared_ptr sp指向相同对象的weak_ptr。T必须能转换成sp指向的类型
-w = p|p可以使一个shared_ptr或一个weak_ptr。赋值后w与p共享对象
-w.reset()|将w置为空
+
+|weak_ptr操作|
+|---|---|
+|weak_ptr<T> w|指向类型为T的对象|
+|weak_ptr<T> w(sp)|与shared_ptr sp指向相同对象的weak_ptr。T必须能转换成sp指向的类型|
+|w = p|p可以使一个shared_ptr或一个weak_ptr。赋值后w与p共享对象|
+|w.reset()|将w置为空|
 w.use_count()|与w共享对象的shared_ptr的数量
 w.expired()|若w.use_count()为0，返回true，否则返回false
 w.lock()|如果expired为true，返回一个空shared_ptr；否则返回一个指向w的对象的shared_ptr
@@ -357,13 +371,20 @@ sp.reset(); //
 * shared_ptr未定义下标运算符，且智能指针类型不支持指针算术运算。因此为了访问数组中的元素，必须用get获取一个内置指针，然后用它来访问数组元素
 **allocator类**
 
-标准库allocator类及其算法|
----|---
-allocator<T> a|定义一个名为a的allocator对象，它可以为类型为T的对象分配内存
-a.allocate(n)|分配一段原始的、未构造的内存，保存n个类型为T的对象
-a.deallocate(p, n)|释放从T*指针p中地址开始的内存，这块内存保存了n个类型为T的对象；p必须是一个先前由allocate返回的指针，且n必须是p创建时所要求的大小。在调用deallocate之前，用户必须对每个在这块内存中创建的对象调用destroy
-a.construct(p, args)|p必须是一个类型为T*的指针，指向一块原始内存；args被传递给类型为T的构造函数，用来在p指向的内存中构造一个对象
-a.destroy(p)|p为T*类型的指针，此算法对p指向的对象执行析构函数
+
+
+
+|标准库allocator类及其算法|
+|---|---|
+|allocator<T> a|定义一个名为a的allocator对象，它可以为类型为T的对象分配内存|
+|a.allocate(n)|分配一段原始的、未构造的内存，保存n个类型为T的对象|
+|a.deallocate(p, n)|释放从T*指针p中地址开始的内存，这块内存保存了n个类型为T的对象；p必须是一个先前由allocate返回的指针，且n必须是p创建时所要求的大小。在调用deallocate之前，用户必须对每个在这块内存中创建的对象调用destroy|
+|a.construct(p, args)|p必须是一个类型为T*的指针，指向一块原始内存；args被传递给类型为T的构造函数，用来在p指向的内存中构造一个对象|
+|a.destroy(p)|p为T*类型的指针，此算法对p指向的对象执行析构函数|
+
+
+
+
 **举个例子**
 ```c++
 allocator<string> alloc;
