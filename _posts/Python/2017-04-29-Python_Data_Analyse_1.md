@@ -5,6 +5,7 @@ category: 编程语言
 keywords: Python , 2017, 编程语言
 ---
 # IPython 基础
+* IPython 一些快捷键：
 ![shortCutOfiPython](ShortCut_ipython.png)
 * %timeit 用于检测任意python语句的执行时间
 * aotomagic 打开或关闭 不带百分号使用魔术命令   
@@ -71,11 +72,11 @@ Out[146]: array([ 1.1,  2.2,  1.3,  1.4,  2.5])])
 
 ## 线性代数
 * 使用dot(x, y) 进行矩阵乘法
-* 常用的numpy.linalg 函数：
-![shortCutOfIPythonArrayFunc](ShortCut_ipython_nplinalg.jpg)   
+* 常用的numpy.linalg 函数：   
+![shortCutOfIPythonArrayFunc](shortCut_ipython_nplinalg.jpg)      
 
 ## 随机数生成
-![shortCutOfIPythonRandom](ShortCut_ipython_nplinalg.jpg)   
+![shortCutOfIPythonRandom](ShortCut_ipython_random.jpg)   
 ![shortCutOfIPythonRandom](ShortCut_ipython_random2.jpg)   
 
 
