@@ -17,7 +17,8 @@ val = Series([-1.2, -1.5, -1.7], index=['two', 'four', 'five'])
 * 可被看作由Series 组成的字典
 * 通过直接传入一个等长列表或NumPy 数组组成的字典来创建DataFrame
 * 可手动指定列序列进行排列.``` DataFrame(data, columns=['year', 'state', 'pop']) ```
-* 嵌套字典传给DataFrame 会被解释为：外层字典的键作为列，内层键作为行索引
+* 嵌套字典传给DataFrame 会被解释为：外层字典的键作为列，内层键作为行索引   
+
 ```python
 In [57]: pop = {'Nevada': {2001: 2.4, 2002: 2.9},
    ....: 'Ohio': {2000: 1.5, 2001: 1.7, 2002: 3.6}}
@@ -31,6 +32,7 @@ Out[59]:
 2002     2.9   3.6
 ```
 * index 对象是不可修改的，以此保证多个数据结构之间的安全共享
+
 index 函数|说明
 ---|---
 append|连接另一个index对象，产生一个新的index
@@ -107,5 +109,6 @@ In [165]: frame.apply(f)
 * wswaplevel接受两个级别的编号或名称，返回一个互换了级别的新对象，但数据不会变化。随后使用sortlevel排序。
 * 使用DataFrame 的set_index 函数将其一个或多个列转换为行索引，并创建一个新的DataFrame。默认这些列会被移除，但也可使用drop=False 将其保留。
 * 使用reset_index 将层次化索引级别转移到列里面。
+
 ---
 *参考资料：《利用Python 进行数据分析》*
