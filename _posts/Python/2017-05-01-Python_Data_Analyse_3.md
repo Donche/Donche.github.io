@@ -82,7 +82,7 @@ data = json.loads(resp.text)
 * pandas.merge 可根据一个或多个键将不同DataFrame中的行连接起来
 * pandas.concat可以沿着一条轴将多个对象堆叠到一起
 
-###数据库风格的DataFrame 合并
+### 数据库风格的DataFrame 合并
 * 使用merge 完成
 * 最好显式指定on='key' 用来连接的列，否则默认使用重叠列的列名当作键
 * 若列名不同可以分别指定：
@@ -176,6 +176,7 @@ df.take(sampler)
 
 ### 计算指标/哑变量
 * get_dummies，使用prefix 添加前缀：
+
 ```python
 In [189]: df = DataFrame({'key': ['b', 'b', 'a', 'c', 'a', 'b'],
      ...:                 'data1': range(6)})
@@ -205,5 +206,6 @@ pieces = [x.strip() for x in val.split(',')]
 
 ![shortCut](https://raw.githubusercontent.com/Donche/Donche.github.io/master/_posts/Python/SC_3_1.jpg)   
 ![shortCut](https://raw.githubusercontent.com/Donche/Donche.github.io/master/_posts/Python/SC_3_2.jpg)
+
 ---
 *参考资料：《利用Python 进行数据分析》*
