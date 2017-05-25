@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python数据分析笔记（5）：Matplotlib 入门、数据的聚合与分组
+title: Python数据分析笔记（4）：Matplotlib 入门、数据的聚合与分组
 category: 编程语言
 keywords: Python , 2017, 编程语言
 ---
@@ -109,6 +109,7 @@ hier_df.groupby(level='cty', axis=1).count()
 * 指的是任何能够从数组产生标量值的数据转换过程，例如mean, count, min, median, std, var, prod(积) sum, first, last 等。例如quantile可以计算Series或DataFrame列的样本分位数
 
 * 若要使用自己的聚合函数，将其传入aggregate或agg:
+
 ```python
 In [57]: def peak_to_peak(arr):
     ...:     return arr.max() - arr.min()
@@ -122,6 +123,7 @@ b     0.036292  0.487276
 ```
 
 ### 面向列的多函数应用
+
 ```python
 grouped_pct.agg(['mean', 'std', peak_to_peak])
 grouped_pct.agg([('foo', 'mean'), ('bar', np.std)])
@@ -164,6 +166,7 @@ Travis  -0.082032 -1.063687 -1.047620 -0.884358 -0.028309
 
 #### apply:
 * 是最一般化的GroupBy 方法，会将待处理的对象拆分成多个片段，然后对个片段调用传入的函数，最后尝试将个片段组合到一起。
+
 ```python
 In [88]: def top(df, n=5, column='tip_pct'):
     ...:     return df.sort_index(by=column)[-n:]
