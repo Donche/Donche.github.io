@@ -77,8 +77,9 @@ data.drop('two', axis=1)
 In [164]: def f(x):
      ...:     return Series([x.min(), x.max()], index=['min', 'max'])
 In [165]: frame.apply(f)
-* 使用applymap(f) 实现元素级的操作。 Series 用map(f)
 ```
+* 使用applymap(f) 实现元素级的操作。 Series 用map(f)
+
 ## 排序
 * 使用```sort_index(axis = 1,ascending = False)``` 进行排序
 * 使用order(by = ['a', 'b']) 按值排序，默认由低到高，NaN在末尾

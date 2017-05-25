@@ -62,6 +62,7 @@ links[x].text_content()
 * Python中的HDF5库有两个接口（即PyTables和h5py），它们各自采取了不同的问题解决方式。h5py提供了一种直接而高级的HDF5API访问接口，而PyTables则抽象了HDF5的许多细节以提供多种灵活的数据容器、表索引、查询功能以及对核外计算技术（out-of-core computation）的某些支持
 ### Microsoft Excel 文件
 * 使用pd.ExcelFile('xxx.xls') 读取文件，使用xls_file.parse('sheet1') 解析某表格
+* 写文件：df.to_excel('filename.xls', sheet_name='sheet1')
 
 ## 使用HTML 和Web API
 * 使用requests 包访问API
