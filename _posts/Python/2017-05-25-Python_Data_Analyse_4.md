@@ -6,7 +6,7 @@ keywords: Python , 2017, 编程语言
 ---
 
 # matplotlib API 入门
-画图逻辑跟MATLAB非常相似，所以jian'dan'de
+matplotlib作图的画风跟MATLAB非常相似，所以直接上例子咯
 ```python
 import matplotlib.pyplot as plt
 fig = plt.figure()
