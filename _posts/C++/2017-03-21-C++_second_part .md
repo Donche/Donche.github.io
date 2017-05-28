@@ -13,9 +13,12 @@ keywords: C++,2017，编程语言
 ## 1. IO库
 * 使用good或fail是确定流总体装填的正确办法。eof和bad操作只能表示特定的错误
 * 如果程序异常中止，输出缓冲区是不会被刷新的
-* 每个流同时最多关联到一个流，但多个流可以同时关联到同一个ostream p283
+* 每个流同时最多关联到一个流，但多个流可以同时关联到同一个ostream (详见p283)
 
 ### 1.1文件流
+* 若创建文件流对象时提供了文件名，则open 自动调用
+* 对一个已经打开的文件流调用open 会失效，并使failbit 被置位，是随后的文件流操作均失效
+* 当一个fstream 被销毁时，close 会自动调用
 #### 1.1.1文件模式：
 
 |模式|介绍|
@@ -58,7 +61,7 @@ push_back|vector,deque,string
 push_front|list,front_list,deque
 insert|vector,deque,list,string,(forward_list有特殊版本)
 
-* 删除deque中除首位位置之外的任何元素都会使所有迭代器、引用和指针失效。指向vector或string中删除点之后位置的迭代器、引用和指针都会失效
+* 删除deque中除首尾位置之外的任何元素都会使所有迭代器、引用和指针失效。指向vector或string中若未重新分配空间，删除点之后位置的迭代器、引用和指针都会失效
 
 ### 2.2 容器操作使迭代器失效规则
 **添加元素：**
@@ -73,8 +76,8 @@ insert|vector,deque,list,string,(forward_list有特殊版本)
 *注意：当我们删除元素时，尾后迭代器总会失效*
 
 ### 2.3迭代器循环
-* 调用erase后，不必递增迭代器
-* 调用insert后，需递增迭代器两次
+* 调用erase后，不必递增迭代器，因为它返回序列中的下一个元素的迭代器
+* 调用insert后，需递增迭代器两次，因为它返回新插入元素的迭代器
 
 ### 2.4容器适配器
 > 本质上来说，适配器是一种机制，能使某种事物的行为看起来像另外一种事物一样。   
@@ -321,8 +324,7 @@ weak_ptr|伴随类，弱引用，指向shared_ptr所管理的对象
 
 
 
-**shared_ptr和new结合使用**
-**直接举例子！**
+**shared_ptr和new结合使用,例子:**
 ```c++
 shared_ptr<int> p1 = new int(1024);//错误，必须使用直接初始化形式
 shared_ptr<int> p2(new int(42));//正确

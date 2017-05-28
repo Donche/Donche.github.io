@@ -80,7 +80,7 @@ constexpr int *q = nullptr;  //q为指向整型的常量指针
 * 分析表达式类型，并不计算表达式的值
 * 如表达式为一个变量，decltype返回变量的类型（包括顶层const及引用）  
 * 如表达式内容是解引用操作，则decltype得到引用类型
-* 如decltype使用的是一个不加括号的变量，则得到的结果是该变量的类型；如给变量假嗓了一层或多层括号，编译器会将其当成一个表达式，从而得到引用类型。
+* 如decltype使用的是一个不加括号的变量，则得到的结果是该变量的类型；如给变量加上了一层或多层括号，编译器会将其当成一个表达式，从而得到引用类型。
 
 **注意：引用从来都作为其所指对象的同义词出现，只有decltype是一个例外**
 
@@ -112,9 +112,9 @@ const_iterator: 可以读取但不可以修改它所指的元素值。如对象�
 其他隐式类型转化  
 数组->指针：当数组被用作decltype的参数、作为取地址符（&），sizeof以及typeid等运算符对象、或用引用来初始化数组的时候，转换不会发生。
 #### 3.1.2 显式转换
-static_cast:任何具有明确定义的类型转换，只要不包含底层const，都可以使用
-dynamic_cast：支持运行时类型识别，后续再讲
-const_cast：只能改变运算对象的底层const。若对象本身不是常量，则通过强制类型转换获得写权限是合法的行为。否则会产生未定义的结果。常用于有函数重载的上下文中。  
+static_cast:任何具有明确定义的类型转换，只要不包含底层const，都可以使用     
+dynamic_cast：支持运行时类型识别，后续再讲     
+const_cast：只能改变运算对象的底层const。若对象本身不是常量，则通过强制类型转换获得写权限是合法的行为。否则会产生未定义的结果。常用于有函数重载的上下文中。      
 reinterpret_cast：通常为运算对象的位模式提供较低层次上的重新解释。应尽量避免使用。
 **例如**
 ```c++
@@ -169,7 +169,7 @@ pf = &lengthCompare; //与上句等价
 
 bool b1 = pf("hello", "goodbye"); //调用lengthCompare函数
 bool b1 = (*pf)("hello", "goodbye"); //等价的调用
-bool b1 = pf("hello", "goodbye"); //等价的调用
+bool b1 = lengthCompare("hello", "goodbye"); //等价的调用
 ```
 
 **(\*pf)两端括号必不可少**  
@@ -182,26 +182,27 @@ bool b1 = pf("hello", "goodbye"); //等价的调用
 void usrBigger(const string &si, const string &s2,
                 bool pf(const string &, const string &));
 void usrBigger(const string &si, const string &s2,
-                bool (*pf)(const string &, const string &));
+                bool (* pf)(const string &, const string &));
 //使用时直接把函数当实参使用即可，会自动转换成指针
 useBigger(s1, s2, lengthCompare);
 ```
 我们还可以使用类型别名和decltype简化代码
 
-**返回指向函数的指针**
-**注意：返回类型不会自动转换为指针，需显式将返回类型指定为指针，举个例子：**
+**返回指向函数的指针**     
+**注意**：返回类型不会自动转换为指针，需显式将返回类型指定为指针，举个例子：
 ```c++
 using F = int(int*, int); //F 是函数类型，不是指针
 using PF = int(*)(int*, int); //PF 是指针类型
 
 PF f1(int); //正确：PF是指向函数的指针，f1返回指向函数的指针
 F f1(int);  //错误：F是函数类型，f1不能返回一个函数
-F *f1(int);  //正确：显示地指定返回类型是指向函数的指针
+F *f1(int);  //正确：显式地指定返回类型是指向函数的指针
 //或使用下面的形式直接声明f1
 int (*f1(int))(int*, int);
 ```
+以上还可采用尾置返回类型的方式：```auto fl(int) -> int(*)(int*, int); ```
 
-**将auto和decltype用于函数指针类型**
+**将auto和decltype用于函数指针类型**      
 如果我们明确知道返回的函数是哪一个，就可以使用decltype简化书写函数指针返回类型的过程。但需注意，decltype返回函数类型而非指针类型，因此需显示加上*以表明我们需要返回指针。**举个例子**
 ```c++
 string::size_type sumLength(const string&, const string&);
@@ -222,7 +223,7 @@ decltype(sumLength) *getFcn(const string &);
 <span id="6.2"></span>
 ### 6.2 字面值常量类
 &diams;数据成员都是字面值类型的聚合类是字面值常量类  
-&diams;如不是聚合类，但若符合下述哟啊求，则也是字面值常量类：
+&diams;如不是聚合类，但若符合下述要求，则也是字面值常量类：
 * 数据成员都必须是字面值类型
 * 类必须至少含有一个constexpr构造函数
 * 如果一个数据成员含有类内初始值，则内置类型成员的初始值必须是一条常量表达式；或者如果成员属于某种类类型，则初始值必须使用成员自己的constexpr构造函数
