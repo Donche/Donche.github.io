@@ -1,8 +1,8 @@
 ---
 layout: post
-title: C++小结（1）
-category: 编程语言
-keywords: C++,2017，编程语言
+title: 双目视觉大结
+category: 计算机视觉
+keywords: OpenCV,2017,C++
 ---
 
 # 双目视觉大结
