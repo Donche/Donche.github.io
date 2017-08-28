@@ -14,6 +14,15 @@ keywords: OpenCV,2017,C++
 * 最近一直在看机器视觉机器学习还有机器人步态...乱七八糟看了一大堆，虽说拿笔写了点笔记但却没有怎么系统整理过，导致好久没有管博客了真是惭愧。所以这个写长点以示悔过。
 * ~~我不生产代码，我只是代码的搬运工...~~
 
+------------8.24更新：-------------
+实在忍不住吐槽几个OpenCV的bug(或许可能不是bug然而超级不好用的类似bug的东西)：
+* 打开摄像头时候，必须由序号从高到低打开
+* OpenCV的一些函数会造成一些很诡异的错误，例如vector无法释放。而且这个错误会突然出现，之前可以运行的代码重新编译一遍都可能出问题。这时可以用Mat来替代。
+>When OpenCV with c++ is used, it may happen this runtime error problem when feeding some Container (eg:vector) to the opencv built-in function. So it is good to use Mat datatype to save the output received by the opencv built-in function and then transfer them to whatever datatype you need.
+
+* OpenCV 的摄像头输入流是有缓存的。如果每帧之间处理速度快的话不要紧，否则延迟一帧会更慢。
+
+
 # 名词解释
 * 内参
 * 外参
@@ -24,17 +33,17 @@ keywords: OpenCV,2017,C++
 * 重投影
 
 # 立体视觉的两种实现方法
-目前我知道的主要是Block Matching 和Feature Matching。   
-前者提前标定好，经过极线校正之后将左右摄像头画面调为同一高度，然后用一个个的窗口进行匹配，得到视差图之后利用外参进行三维重建，效果很不错，速度也快，缺点就是得事先标定好，中途摄像头相对位置稍微变一下就得重新标定（比如自己用两个摄像头随意摆桌上的那种就很麻烦）。   
-后者是分别对左右两个图像取特征点，计算描述子然后匹配、筛选，得到一一对应的特征点后反推摄像头外参，同时将图像进行三角剖分，然后用推到的外参进行三维重建，速度比较慢，而且推出来的外参很不稳定，我用ORB推出来的外参就完全没法用，只好作罢。
+目前的立体视觉匹配算法主要是Block Matching 、Feature Matching 和 Phase differencing algorithms。我们只考虑前两种。
+前者提前标定好，经过极线校正之后将左右摄像头画面矫正为同一高度以减少匹配所需的计算，然后用一个个的窗口进行匹配得到视差图，之后利用外参进行三维重建，效果很不错，速度也快，缺点就是得事先标定好，中途摄像头相对位置稍微变一下就得重新标定（比如自己用两个摄像头随意摆桌上的那种就很麻烦）。   
+后者是分别对左右两个图像取特征点，计算描述子然后匹配、筛选，得到一一对应的特征点后反推摄像头外参，同时将图像进行三角剖分，然后用推到的外参进行三维重建，速度比较慢，而且推出来的外参很不稳定。而且由于算法特征只能得到稀疏的视差场。
 
-所以，主要使用Block Matching进行三维重建，Feature Matching只做到匹配
+所以，主要使用Block Matching进行三维重建，Feature Matching只做到匹配。
 
 # Block Matching
 主要思路：1.标定 2.获取视差图 3.三维重建
 ## 标定
 标定使用的标定板理论上可以使用任何图像，一般来说用的是标准的标定板，有chessboard、circles grid 和asymmetric circles grid这三种。需要注意的是，对于chessboard，对应的长和宽分别为两个方向上检测出来的角点数，也就是黑白方格数的值减一，square size 是两个角点之间的距离；对于circles grid， 长宽为两个方向上的圆的数量，square size 为最近两圆圆心距离；asymmetric circles grid 的square size 为水平方向两圆圆心距离的一半。     
-OpenCV标定使用的是张正有的方法，所以一般来说十张不同姿态的标定板就可以标定出不错的结果了，我一般用20-30张，重投影误差可以维持在0.08-0.1之间。又一个需要注意的是，如果使用circles grid，不应该使标定板距离摄像头太近，否则误差会很大。
+OpenCV标定使用的是张正有的方法，所以一般来说十张不同姿态的标定板就可以标定出不错的结果了，我一般用20-30张，重投影误差可以维持在0.08左右。又一个需要注意的是，如果使用circles grid，不应该使标定板距离摄像头太太近，否则误差会很大。
 
 ### 内参
 首先来看一下标定主要需要的参数：
