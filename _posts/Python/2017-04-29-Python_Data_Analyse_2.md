@@ -2,7 +2,10 @@
 layout: post
 title: Python数据分析笔记（2）：pandas 入门
 category: 编程语言
-keywords: Python , 2017, 编程语言
+tags: 
+    - 2017
+    - Python
+    - 编程语言
 ---
 
 # pandas 的数据结构
@@ -10,26 +13,26 @@ keywords: Python , 2017, 编程语言
 * NumPy 数组运算都会保留索引和值之间的链接
 * 可以通过Python 字典来创建Series
 ```python
-val = Series([-1.2, -1.5, -1.7], index=['two', 'four', 'five'])
+val = Series([-1.2, -1.5, -1.7], index=['two', 'four', 'five'])
 ```
 
 ## DataFrame
 * 可被看作由Series 组成的字典
 * 通过直接传入一个等长列表或NumPy 数组组成的字典来创建DataFrame
-* 可手动指定列序列进行排列.``` DataFrame(data, columns=['year', 'state', 'pop']) ```
+* 可手动指定列序列进行排列.``` DataFrame(data, columns=['year', 'state', 'pop']) ```
 * 嵌套字典传给DataFrame 会被解释为：外层字典的键作为列，内层键作为行索引   
 
 ```python
-In [57]: pop = {'Nevada': {2001: 2.4, 2002: 2.9},
-   ....: 'Ohio': {2000: 1.5, 2001: 1.7, 2002: 3.6}}
-In [58]: frame3 = DataFrame(pop)
+In [57]: pop = {'Nevada': {2001: 2.4, 2002: 2.9},
+   ....: 'Ohio': {2000: 1.5, 2001: 1.7, 2002: 3.6}}
+In [58]: frame3 = DataFrame(pop)
 
-In [59]: frame3
+In [59]: frame3
 Out[59]:
-      Nevada  Ohio
-2000     NaN   1.5
-2001     2.4   1.7
-2002     2.9   3.6
+      Nevada  Ohio
+2000     NaN   1.5
+2001     2.4   1.7
+2002     2.9   3.6
 ```
 * index 对象是不可修改的，以此保证多个数据结构之间的安全共享
 
@@ -51,17 +54,17 @@ unique|计算index 中唯一的数组
 ## 重新索引
 * 使用reindex进行重新索引，可引入缺失值如：
 ```python
-obj.reindex(['a', 'b', 'c', 'd', 'e'], fill_value=0)
+obj.reindex(['a', 'b', 'c', 'd', 'e'], fill_value=0)
 ```
 * 或指定```method = 'ffil'```(或pad)向前值填充，或bfill(backfill)。使用limit指定最大填充量
 * 还可指定```columns = xxx```重新索引列
 
 ## 丢弃指定轴上的项
 ```python
-obj = Series(np.arange(5.), index=['a', 'b', 'c', 'd', 'e'])
-obj.drop(['d', 'c'])
+obj = Series(np.arange(5.), index=['a', 'b', 'c', 'd', 'e'])
+obj.drop(['d', 'c'])
 # 可删除任意轴上的索引值
-data.drop('two', axis=1)
+data.drop('two', axis=1)
 ```
 
 ## 索引、选取、过滤
@@ -74,9 +77,9 @@ data.drop('two', axis=1)
 ## 函数应用和映射
 * 可用DataFrame 的apply 方法用于各行各列的一维数组操作，如
 ```python
-In [164]: def f(x):
-     ...:     return Series([x.min(), x.max()], index=['min', 'max'])
-In [165]: frame.apply(f)
+In [164]: def f(x):
+     ...:     return Series([x.min(), x.max()], index=['min', 'max'])
+In [165]: frame.apply(f)
 ```
 * 使用applymap(f) 实现元素级的操作。 Series 用map(f)
 

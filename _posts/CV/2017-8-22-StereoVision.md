@@ -2,7 +2,11 @@
 layout: post
 title: 双目视觉大结
 category: 计算机视觉
-keywords: OpenCV,2017,C++
+tags: 
+    - 2017
+    - 计算机视觉
+    - OpenCV
+    - C++
 ---
 
 # 双目视觉大结

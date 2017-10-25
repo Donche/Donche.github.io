@@ -2,7 +2,10 @@
 layout: post
 title: Python与编码
 category: 编程语言
-keywords: Python , 2017, 编程语言
+tags: 
+    - 2017
+    - Python
+    - 编程语言
 ---
 
 *在写豆瓣爬虫的时候遇到了一些莫名其妙的关于编码的问题，于是稍微学习了一下*

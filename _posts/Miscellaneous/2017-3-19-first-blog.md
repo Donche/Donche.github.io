@@ -2,7 +2,9 @@
 layout: post
 title: 第一篇
 category: 闲杂事件
-keywords: 闲杂,2017
+tags: 
+    - 2017
+    - 闲杂
 ---
 
 ## 这就是所谓的第一个文章了

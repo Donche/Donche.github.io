@@ -2,7 +2,10 @@
 layout: post
 title: Python数据分析笔记（1）：IPython 及 NumPy 基础
 category: 编程语言
-keywords: Python , 2017, 编程语言
+tags: 
+    - 2017
+    - Python
+    - 编程语言
 ---
 # IPython 基础
 * IPython 一些快捷键：
@@ -52,12 +55,12 @@ arr1 = np.array(data1)
 * meshgrid 函数接受两个一维数组并产生两个二维矩阵
 * np.where 时三元表达式``` x if consition else y ```的矢量化版本。使用如下：
 ```python
-In [140]: xarr = np.array([1.1, 1.2, 1.3, 1.4, 1.5])
-In [141]: yarr = np.array([2.1, 2.2, 2.3, 2.4, 2.5])
-In [142]: cond = np.array([True, False, True, True, False
-In [145]: result = np.where(cond, xarr, yarr)
-In [146]: result
-Out[146]: array([ 1.1,  2.2,  1.3,  1.4,  2.5])])
+In [140]: xarr = np.array([1.1, 1.2, 1.3, 1.4, 1.5])
+In [141]: yarr = np.array([2.1, 2.2, 2.3, 2.4, 2.5])
+In [142]: cond = np.array([True, False, True, True, False
+In [145]: result = np.where(cond, xarr, yarr)
+In [146]: result
+Out[146]: array([ 1.1,  2.2,  1.3,  1.4,  2.5])])
 ```
 * 基本的数组统计方法函数：
 ![shortCutOfIPythonFuncStat1](https://raw.githubusercontent.com/Donche/Donche.github.io/master/_posts/Python/ShortCut_ipython_func_stat1.jpg)   

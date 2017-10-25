@@ -2,7 +2,10 @@
 layout: post
 title: Python数据分析笔记（3）：数据存储与规整化
 category: 编程语言
-keywords: Python , 2017, 编程语言
+tags: 
+    - 2017
+    - Python
+    - 编程语言
 ---
 # 数据加载、存储与文件格式
 ## 文本格式的数据
@@ -26,11 +29,11 @@ read_clipboard|读取剪贴板上的数据，可看作read_table 的剪贴板版
 ### 逐块读取文本文件
 设置chunksize 后read_csv 返回的对象可根据chunksize 对文件进行逐块迭代：
 ```python
-chunker = pd.read_csv('ch06/ex6.csv', chunksize=1000)
-tot = Series([])
-for piece in chunker:
-    tot = tot.add(piece['key'].value_counts(), fill_value=0)
-tot = tot.order(ascending=False)
+chunker = pd.read_csv('ch06/ex6.csv', chunksize=1000)
+tot = Series([])
+for piece in chunker:
+    tot = tot.add(piece['key'].value_counts(), fill_value=0)
+tot = tot.order(ascending=False)
 ```
 
 ### 写出到文本格式
@@ -129,17 +132,17 @@ df.combine_first(df2)
 ### 利用函数和映射进行数据转换
 * 首先写一个需要转换的映射，然后用map处理Series。如：
 ```python
-meat_to_animal = {
-　'bacon': 'pig',
-　'pulled pork': 'pig',
-　'pastrami': 'cow',
-　'corned beef': 'cow',
-　'honey ham': 'pig',
-　'nova lox': 'salmon'
+meat_to_animal = {
+　'bacon': 'pig',
+　'pulled pork': 'pig',
+　'pastrami': 'cow',
+　'corned beef': 'cow',
+　'honey ham': 'pig',
+　'nova lox': 'salmon'
 }
-data['animal'] = data['food'].map(str.lower).map(meat_to_animal)
+data['animal'] = data['food'].map(str.lower).map(meat_to_animal)
 #或用以下函数：
-data['food'].map(lambda x: meat_to_animal[x.lower()])
+data['food'].map(lambda x: meat_to_animal[x.lower()])
 ```
 
 ### 替换值
@@ -170,8 +173,8 @@ data[np.abs(data) > 3] = np.sign(data) * 3
 ### 排列和随机采样
 * 使用numpy.random.permutation 函数可实现列的排列工作。对轴的长度调用permutation 会产生一个新顺序的整数数组，随后可用ix 索引操作或take 函数使用数组。如：
 ```python
-df = DataFrame(np.arange(5 * 4).reshape(5, 4))
-sampler = np.random.permutation(5)
+df = DataFrame(np.arange(5 * 4).reshape(5, 4))
+sampler = np.random.permutation(5)
 df.take(sampler)
 ```
 
@@ -179,18 +182,18 @@ df.take(sampler)
 * get_dummies，使用prefix 添加前缀：
 
 ```python
-In [189]: df = DataFrame({'key': ['b', 'b', 'a', 'c', 'a', 'b'],
-     ...:                 'data1': range(6)})
+In [189]: df = DataFrame({'key': ['b', 'b', 'a', 'c', 'a', 'b'],
+     ...:                 'data1': range(6)})
 
-In [190]: pd.get_dummies(df['key'], prefix = 'key')
+In [190]: pd.get_dummies(df['key'], prefix = 'key')
 Out[190]:
-   key_a  key_b  key_c
-0  0  1  0
-1  0  1  0
-2  1  0  0
-3  0  0  1
-4  1  0  0
-5  0  1  0
+   key_a  key_b  key_c
+0  0  1  0
+1  0  1  0
+2  1  0  0
+3  0  0  1
+4  1  0  0
+5  0  1  0
 ```
 ## 字符串操作
 ### 字符串对象方法
