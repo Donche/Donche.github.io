@@ -2,6 +2,7 @@
 layout: post
 title: Python数据分析笔记（1）：IPython 及 NumPy 基础
 category: 编程语言
+catalog: true
 tags: 
     - 2017
     - Python

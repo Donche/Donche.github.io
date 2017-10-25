@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 基于邻域的推荐算法
-category: 算法实践
+category: 算法
+catalog: true
 tags: 
     - 2017
     - 算法

@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 推荐系统实践概论
-category: 算法实践
+category: 算法
+catalog: true
 tags: 
     - 2017
     - 算法

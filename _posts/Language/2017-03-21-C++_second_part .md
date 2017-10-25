@@ -2,6 +2,7 @@
 layout: post
 title: C++小结（2）
 category: 编程语言
+catalog: true
 tags: 
   - 2017
   - C++

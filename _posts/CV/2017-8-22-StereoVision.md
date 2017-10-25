@@ -2,6 +2,7 @@
 layout: post
 title: 双目视觉大结
 category: 计算机视觉
+catalog: true
 tags: 
     - 2017
     - 计算机视觉
