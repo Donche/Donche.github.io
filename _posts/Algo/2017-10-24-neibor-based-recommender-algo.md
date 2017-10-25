@@ -8,7 +8,8 @@ tags:
     - 算法
     - 推荐系统
 ---
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default">
+</script>
 # 基于邻域的算法
 基于邻域的算法分为两大类，一类是基于用户的协同过滤算法，另一类是基于物品的协同过滤算法。这两类算法都已经很成熟，所以做个笔记以备忘。数据集使用MovieLens提供的1M 数据集，可从[这个网站上](https://grouplens.org/datasets/movielens/) 下载。读取数据集并按7：3将每个用户看过的电影分为训练集和测试集。
 
