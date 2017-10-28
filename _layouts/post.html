@@ -155,6 +155,11 @@ layout: default
 </article>
 
 
+{% if page.mathjax %}
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default">
+</script>}
+{% endif %}
+
 
 {% if site.disqus_username %}
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->

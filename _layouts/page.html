@@ -98,6 +98,23 @@ layout: default
                 </section>
                 {% endif %}
 
+                <!-- featured-catagory-->
+                {% if site.featured-category %}
+                <!-- featured-catagory-->
+                <section>
+                    <hr class="side-catalog">
+                    <h5><a href="{{'/category/' | prepend: site.baseurl }}">FEATURED CATEGORY</a></h5>
+                    <div class="side-catalog">
+                        {% for category in site.categories %}
+                        <!-- featured-catagory-->
+                            <a href="{{ site.baseurl }}/category/{{ category }}">
+                                {{ category }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endif %}
+
                 <!-- Short About -->
                 <section class="visible-md visible-lg">
                     <hr><h5><a href="{{'/about' | prepend: site.baseurl }}">ABOUT ME</a></h5>
