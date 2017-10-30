@@ -150,5 +150,5 @@ alpha   | recall    | precision | coverage  | popularity    | hit number
 3. <span id="3"></span>Page, Lawrence and Brin, Sergey and Motwani, Rajeev and Winograd, Terry (1999) The PageRank Citation Ranking: Bringing Order to the Web. Technical Report. Stanford InfoLab.
 4. <span id="4"></span>[佩奇排名-维基百科](https://zh.wikipedia.org/zh-hans/%E4%BD%A9%E5%A5%87%E6%8E%92%E5%90%8D?oldformat=true)
 5. <span id="5"></span>[广义最小残量方法-维基百科](https://zh.wikipedia.org/wiki/%E5%B9%BF%E4%B9%89%E6%9C%80%E5%B0%8F%E6%AE%8B%E9%87%8F%E6%96%B9%E6%B3%95?oldformat=true)
-6. [浅析PageRank算法--博客] (http://blog.codinglabs.org/articles/intro-to-pagerank.html)
+6. [浅析PageRank算法--博客](http://blog.codinglabs.org/articles/intro-to-pagerank.html)
 7. [PersonalRank：一种基于图的推荐算法---博客园](http://www.cnblogs.com/zhangchaoyang/articles/5470763.html)
