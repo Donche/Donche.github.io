@@ -34,7 +34,7 @@ E（或p）的引入不仅解决了rank sink的问题，同时还可以通过E �
 
 # 2. Topic-Sensitive PageRank
 但是以上算法忽视了一个问题：用户的对于网页重要性的评判是不一样的。尽管可以使用不同的E 来个性化搜索结果，但是当用户数量大幅增加的时候，维护规模如此庞大的矩阵是很困难的。所以便出现了Topic-Sensitive PageRank[[2]](#2), 采用主题的方式，维护若干个主题的向量，然后关联用户与主体之间的相关度，以此为用户推荐搜索结果。Topic-Sensitive PageRank 的计算公式如下：    
-$$Rank = (1-\alpha)M * Rank + \alpha v$$
+$$Rank = (1-\alpha)M * Rank + \alpha v$$    
 其中v 为每个主题各自维护，记录所有页面与主题的关系。假如有A, B, C, D 这四个主题，每个主题各自维护一个v 向量，有a, b, c, d, e 这五个网站，其中b, d 与B 主题相关，则$$v_b$$ 向量为 {0，0.5， 0， 0.5， 0 }。   
 得到每个主题的rank 值之后，便可以通过各种方式得到用户喜好，向其推荐对应topic 的链接即可。    
 
@@ -60,9 +60,9 @@ $$
 写为矩阵形式为：     
   
 $$Rank = (1-\alpha)M^T Rank + \alpha r_0$$   
-其中$$r_0$k可以看作Topic-Sensitive PageRank中的v向量，表示每次随机游走有α 的概率回到起始节点。最终我们得到了每个物品和人的rank 如下：
+其中$$r_0$$可以看作Topic-Sensitive PageRank中的v向量，表示每次随机游走有α 的概率回到起始节点。最终我们得到了每个物品和人的rank 如下：    
 $$Rank = \alpha (I- (1-\alpha)M^T)^{-1}R_0 $$     
-或者写成线性方程组的形式：
+或者写成线性方程组的形式：    
 $$(I- (1-\alpha)M^T)Rank =\alpha R_0 $$    
 因此，为了求出Rank，只需要解上述方程即可，比迭代算法要快很多了。
 
