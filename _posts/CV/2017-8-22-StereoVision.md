@@ -10,25 +10,26 @@ tags:
     - C++
 ---
 
-# 双目视觉大结
+# 1.双目视觉大结
 
-* 本来应该是很多个小结的，结果因为一懒再懒，一转眼代码都写完了还没有小结过，干脆直接大结好了，长点就长点，反正有目录，跟小结其实是差不多的。
-* 源码都在我的[github](https://github.com/Donche/StereoVision)里面，包括有用的和没用的，可以随意挑需要的出来。立体视觉有几种实现方式都做了（Feature Matching并没有做完，虽说特征点匹配的还比较精准，但是倒推回去的R跟T很不靠谱，干脆就做到匹配完算了）。Block Matching的准确性还是挺好的，一般来说只要标定没问题，稍微调一下nDisparities就可以用了。
-* 因为也是实验室做的项目的一部分，所以功能性的代码暂时就更新到这了，以后应该大概可能会改进一下。
-* 其实这方面的博客已经够多了，我也参考了不少，所以很基础知识的就不复习了，就说下主要思路。
+* 本来应该是很多个小结的，结果因为一懒再懒，一转眼代码都写完了还没有小结过，干脆直接大结好了。
+* 源码都在我的[github](https://github.com/Donche/StereoVision)里面，包括有用的和没用的，可以随意挑需要的出来。立体视觉有几种实现方式都做了（Feature Matching并没有做完。特征点匹配的虽然比较精准，但是经过筛选之后往往可用的只会剩下几十个，如果在特征不突出的环境中还可能更少。导致倒推回去的R跟T很不靠谱，所以我只做到了特征点的匹配就停了）。Block Matching的准确性还是挺好的，一般来说只要标定没问题，稍微调一下nDisparities和minDisparity就可以用了。
+* 因为也是实验室做的项目的一部分，所以功能性的代码暂时就更新到这了，~~以后可能会改进~~。
+* 其实这方面的博客已经够多了，我也参考了不少[[1]](#1)[[2]](#2) ，所以很基础知识的就不复习了，就说下主要思路。
 * 最近一直在看机器视觉机器学习还有机器人步态...乱七八糟看了一大堆，虽说拿笔写了点笔记但却没有怎么系统整理过，导致好久没有管博客了真是惭愧。所以这个写长点以示悔过。
-* ~~我不生产代码，我只是代码的搬运工...~~
+* 这篇主要讲的是双目视觉用OpenCV 的实现方法，其中涉及到的基础知识可以在很多书或者技术博客中找到（《计算机视觉》、《视觉SLAM》等等）。
 
-------------8.24更新：-------------
-实在忍不住吐槽几个OpenCV的bug(或许可能不是bug然而超级不好用的类似bug的东西)：
-* 打开摄像头时候，必须由序号从高到低打开
-* OpenCV的一些函数会造成一些很诡异的错误，例如vector无法释放。而且这个错误会突然出现，之前可以运行的代码重新编译一遍都可能出问题。这时可以用Mat来替代。
+*------------8.24更新：-------------*
+实在忍不住吐槽几个OpenCV的bug(或许可能不是bug然而超级不好用的东西)：
+* 打开摄像头时候，必须由序号从高到低打开，否则无法打开
+* OpenCV的某些内置函数会造成一些很诡异的错误，例如vector无法释放。而且这个错误会毫无征兆突然出现，之前可以运行的代码重新编译一遍都可能出问题。这时可以用opencv的Mat类型来替代vector，具体实现的时候用Mat(A)即可。
 >When OpenCV with c++ is used, it may happen this runtime error problem when feeding some Container (eg:vector) to the opencv built-in function. So it is good to use Mat datatype to save the output received by the opencv built-in function and then transfer them to whatever datatype you need.
 
-* OpenCV 的摄像头输入流是有缓存的。如果每帧之间处理速度快的话不要紧，否则延迟一帧会更慢。
+* OpenCV 的摄像头输入流是有缓存的，默认缓存（貌似）为一帧。如果每帧之间处理速度快的话是发现不了的，然而如果每帧之间处理时间为5秒的话，就会出现十秒的延迟。最简单的解决办法是在读取的时候多读一帧，就可以拿到没有延迟的图像了。
 
 
-# 名词解释
+# 2. 名词解释
+~~谷歌一下你就知道~~
 * 内参
 * 外参
 * 特征点（由关键点和描述子组成）
@@ -37,20 +38,20 @@ tags:
 * 标定
 * 重投影
 
-# 立体视觉的两种实现方法
+# 3. 立体视觉的两种实现方法
 目前的立体视觉匹配算法主要是Block Matching 、Feature Matching 和 Phase differencing algorithms。我们只考虑前两种。
 前者提前标定好，经过极线校正之后将左右摄像头画面矫正为同一高度以减少匹配所需的计算，然后用一个个的窗口进行匹配得到视差图，之后利用外参进行三维重建，效果很不错，速度也快，缺点就是得事先标定好，中途摄像头相对位置稍微变一下就得重新标定（比如自己用两个摄像头随意摆桌上的那种就很麻烦）。   
 后者是分别对左右两个图像取特征点，计算描述子然后匹配、筛选，得到一一对应的特征点后反推摄像头外参，同时将图像进行三角剖分，然后用推到的外参进行三维重建，速度比较慢，而且推出来的外参很不稳定。而且由于算法特征只能得到稀疏的视差场。
 
 所以，主要使用Block Matching进行三维重建，Feature Matching只做到匹配。
 
-# Block Matching
+# 4. Block Matching
 主要思路：1.标定 2.获取视差图 3.三维重建
-## 标定
+## 4.1 标定
 标定使用的标定板理论上可以使用任何图像，一般来说用的是标准的标定板，有chessboard、circles grid 和asymmetric circles grid这三种。需要注意的是，对于chessboard，对应的长和宽分别为两个方向上检测出来的角点数，也就是黑白方格数的值减一，square size 是两个角点之间的距离；对于circles grid， 长宽为两个方向上的圆的数量，square size 为最近两圆圆心距离；asymmetric circles grid 的square size 为水平方向两圆圆心距离的一半。     
 OpenCV标定使用的是张正有的方法，所以一般来说十张不同姿态的标定板就可以标定出不错的结果了，我一般用20-30张，重投影误差可以维持在0.08左右。又一个需要注意的是，如果使用circles grid，不应该使标定板距离摄像头太太近，否则误差会很大。
 
-### 内参
+### 4.1.1 内参
 首先来看一下标定主要需要的参数：
 ```c++
 CV_EXPORTS_W double calibrateCamera( InputArrayOfArrays objectPoints,
@@ -80,7 +81,7 @@ void StereoCalibration::calcBoardCornerPositions( vector<Point3f>& corners)
 * rvecs(tvecs)：Output vector of rotation(translation) vectors estimated for each pattern view，可以用来计算重投影误差。
 * flag：~~立flag 用的，~~ 设置一些标定方法，比如```CV_CALIB_FIX_K4```。
 
-### 外参
+### 4.1.2 外参
 知道了内参之后，外参就比较好搞了，标定也是很准的。先看一下函数：
 ```c++
 CV_EXPORTS_W double stereoCalibrate( InputArrayOfArrays objectPoints,
@@ -101,7 +102,7 @@ CV_EXPORTS_W double stereoCalibrate( InputArrayOfArrays objectPoints,
 * F：基础矩阵
 * flag：就是flag 啊
 
-### 极线校正
+### 4.1.3 极线校正
 
 为了匹配需要，计算出四个map用来对摄像头得到的图像进行remap，得到双目平行校正后的图像：
 ```c++
@@ -119,7 +120,7 @@ CV_EXPORTS_W void initUndistortRectifyMap( InputArray cameraMatrix, InputArray d
                         Size size, int m1type, OutputArray map1, OutputArray map2 );
 ```
 
-## 获取视差图
+## 4.2 获取视差图
 opencv2提供的BM算法主要有BM、SGBM和GC。   
 然而我用的是OpenCV3，跟2有些不一样。不知道为什么，但是我们好像要失去GC了。   
 没关系，对于我这个来说BM差不多够了。   
@@ -179,7 +180,7 @@ int speckleRange = 14;
 ```
 
 
-## 三维重建
+## 4.3 三维重建
 就是用三角测量还原出来场景的三维点，OpenCV 用reprojectImageTo3D 实现：
 ```c++
 CV_EXPORTS_W void reprojectImageTo3D( InputArray disparity,
@@ -190,9 +191,9 @@ CV_EXPORTS_W void reprojectImageTo3D( InputArray disparity,
 得到的三维点可以导出到文件给MatLab画出来，或者用OpenGL实时显示（不知道为什么我这个OpenGL画出来的画风很诡异，大概是哪没搞明白，等好了再详细介绍这块吧）
 
 
-# Feature Matching
+# 5. Feature Matching
 主要思路 1.找特征点 2.匹配、筛选
-## 特征点
+## 5.1 特征点
 常用的主要有SURF、ORB、SIFT。一般来说就计算速度上，ORB>SURF>SIFT；计算的复杂度则反过来。一般情况使用ORB是比较好的选择，经过筛选之后还会留下来不少匹配好的特征点。     
 OpenCV3 里对特征点的实现方法改动比较大，需要用Feature2D 这个类来计算关键点和描述子，再用BFMatcher进行匹配。需要注意的是ORB使用Hamming distance作为描述子距离的度量，其他特征点可以使用不同的范数（如NORM_L2）。
 具体特征点实现方法主要如下（省去了各种有效性的判断，只写了主要思路）：
@@ -207,7 +208,7 @@ feature_l->detectAndCompute(imgLeft, noArray(), key_points_l, descriptor_l);
 feature_r->detectAndCompute(imgRight, noArray(), key_points_r, descriptor_r);
 ```
 
-## 匹配和筛选
+## 5.2 匹配和筛选
 匹配主要有三种，KNNMatch、radiusMatch和普通的BFMatch。
 * KNNMatch：Finds the k best matches for each descriptor from a query set.
 * radiusMatch：For each query descriptor, finds the training descriptors not farther than the specified distance.
@@ -223,6 +224,9 @@ feature_r->detectAndCompute(imgRight, noArray(), key_points_r, descriptor_r);
 * symmetryTest：进行双向的验证，如果左右两个图像中的一堆特征点互相匹配的话，就视为有效匹配。
 
 以上两种方法结合起来就可以得到效果很不错的匹配结果，误匹配很少，速度也不慢。
+ 
 
-# 总结
-先到这里吧，其实还有很多可以写的，有时间了再补充。      
+
+*参考资料*
+1. <span id="1"></span> http://blog.csdn.net/chenyusiyuan/article/details/5961769
+2. <span id="2"></span> http://blog.csdn.net/wangyaninglm/article/details/52142217
