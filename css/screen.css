@@ -210,12 +210,29 @@ ul.posts {
 
 }
 
-  /* standard */
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    /* text-align: center; */
+}
+
+th{
+    padding: 0.5em;
+    border:2px solid #555555;
+    /* text-align: center; */
+}
+
+td{
+  /* padding: 0.5em; */
+    border:2px solid #555555;
+    /* text-align: center; */
+}
 
   #post pre {
     border: 0px solid #ddd;
     background-color: #444446;
     padding: 0 .4em;
+    text-align: left;
   }
 
   #post ul,
