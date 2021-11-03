@@ -1,22 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+    <link rel="shortcut icon" href="#">
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>{{ page.title }}</title>
+   <meta name="author" content="Donche" />
 
-{% include head.html %}
+   <!-- syntax highlighting CSS -->
+   <!-- <link rel="stylesheet" href="/css/syntax.css" type="text/css" /> -->
+   <link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: site.baseurl }}" type="text/css" />
 
-<!-- hack iOS CSS :active style -->
-<body ontouchstart="">
+   <!-- Homepage CSS -->
+   <!-- <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" /> -->
+   <link rel="stylesheet" href="{{ "/css/screen.css" | prepend: site.baseurl }}" type="text/css" media="screen, projection" />
 
-    {% include nav.html %}
+   <!-- Typekit -->
+   <script type="text/javascript" src="http://use.typekit.com/jpd0pfm.js"></script>
+   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
+<body>
 
-    {{ content }}
+<div class="site">
+  <div class="title">
+    <a href="/">Donche</a>
+    <a class="extra" href="/">home</a>
+  </div>
 
-    {% include footer.html %}
+  {{ content }}
 
+  <div class="footer">
+    <div class="contact">
+      <p>
+        <br />
+        それにしても、ネットは広大だわ
+        <br />
+        Founder of nothing, Achiever of nothing.
+        <br />
+        版权所有，盗版必究 ^_^
+      </p>
+    </div>
+  </div>
+</div>
 
-<!-- Image to hack wechat -->
-<!-- <img src="/img/icon_wechat.png" width="0" height="0" /> -->
-<!-- Migrate from head to bottom, no longer block render and still work -->
+<!-- Google Analytics -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-108914677-1");
+pageTracker._trackPageview();
+</script>
+<!-- Google Analytics end -->
 
 </body>
-
 </html>

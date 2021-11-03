@@ -1,5 +1,7 @@
-### 我的博客
+# 记录
 
-地址：[https://donche.github.io/](https://donche.github.io/)
+用来记录一些东西(如果我写什么的话)
 
-根据[Hux Blog](https://github.com/Huxpro/huxpro.github.io)模板写成
+博客模板来自[这里](http://github.com/mojombo/jekyll)
+
+_posts里的所有文章版权所有，盗版者死。
