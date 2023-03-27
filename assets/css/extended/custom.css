@@ -1,0 +1,31 @@
+.main {
+    max-width: calc(var(--main-width) + var(--gap) * 10);
+}
+
+.post-entry {
+    max-width: calc(var(--main-width) + var(--gap) * 10);
+    margin-left: auto;
+    margin-right: auto;
+}
+.first-entry {
+    max-width: calc(var(--main-width) + var(--gap) * 10);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Increase the width of images placed in home info. */
+.home-info .entry-content img {
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+/* Set a limit on the width of post images and align them center. */
+.post-single .entry-cover {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
