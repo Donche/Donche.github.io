@@ -6,7 +6,7 @@ title: Donche
 <div id="home">
 
     {% for post in site.posts %}
-    {% if post.lang == 'ch' %}
+    {% if post.lang == 'en' %}
       <div>
         <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
       </div>

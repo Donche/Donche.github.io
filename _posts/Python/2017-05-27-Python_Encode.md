@@ -3,6 +3,7 @@ layout: post
 title: Python与编码
 category: 编程语言
 catalog: true
+lang: ch
 tags: 
     - 2017
     - Python

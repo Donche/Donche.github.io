@@ -110,7 +110,7 @@ ul.posts {
   text-align: justify;
   /* width: 60%; */
   /* margin: 3em 20% 2em 20%; */
-  margin-top: 3em;
+  margin-top: 1em;
   margin-bottom: 2em;
   margin-right: auto;
   margin-left: auto;
@@ -207,10 +207,6 @@ ul.posts {
 /*
 /*****************************************************************************/
 
-#post {
-
-}
-
 table{
     border-collapse: collapse;
     border-spacing: 0;
@@ -241,22 +237,32 @@ td{
     margin-left: 1.35em;
   }
 
-  #post code {
-    border: 1px solid #ddd;
-    /* background-color: #fff0; */
-    background-color: #00000;
-    font-size: 85%;
-    padding: 0 .2em;
-    overflow: auto;
-  }
+  code {
+    background-color: #fff0;
+  display: block;
+  border: none;
+  font-family: "Fira Code", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow: auto;
+  white-space: pre-wrap;
+}
 
-pre {
+pre { 
   overflow: scroll;
     border: none;
     /* white-space: pre-wrap; */
   /* white-space: auto; */
 
 }
+
+  img {
+    max-width: 80%;
+    padding: 1em 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
 
   #post pre code {
     border: none;
@@ -265,22 +271,22 @@ pre {
   }
 
   #post img {
-    max-width: 42em;
+    max-width: 80%;
     padding: 1em 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
   }
 
   /* terminal */
 
   #post pre.terminal {
     border: 1px solid black;
-    /* background-color: #333; */
-    background-color: #00000;
+    background-color: #333;
+    /* background-color: #00000; */
     /* color: white; */
   }
 
-  #post pre.terminal code {
-    /* background-color: #333; */
-  }
 
 #related {
   margin-top: 2em;

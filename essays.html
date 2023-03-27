@@ -1,0 +1,32 @@
+---
+layout: default
+title: Donche
+---
+
+<div id="home">
+
+    {% for tag in site.tags %}
+      <div>
+        {% for post in tag[1] %}
+            {% if post.lang == 'chessay' %}
+                <h1>{{ tag[0] }}</h1>
+                {% for post in tag[1] %}
+                <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+                {% endfor %}
+                </ul>
+                {% break %}
+            {% endif %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+    <!-- {% for post in site.posts %}
+    {% if post.lang == 'chessay' %}
+      <div>
+        <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      </div>
+    {% endif %}
+    {% endfor %} -->
+  <!-- </ul> -->
+
+</div>

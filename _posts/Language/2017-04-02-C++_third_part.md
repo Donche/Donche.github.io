@@ -3,6 +3,7 @@ layout: post
 title: C++小结（3）
 category: 编程语言
 catalog: true
+lang: ch
 tags: 
   - 2017
   - C++

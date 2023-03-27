@@ -4,6 +4,7 @@ title: 推荐系统实践概论
 category: 算法
 catalog: true
 mathjax: true
+lang: ch
 tags: 
     - 2017
     - 算法

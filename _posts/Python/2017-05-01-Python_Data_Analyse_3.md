@@ -3,6 +3,7 @@ layout: post
 title: Python数据分析笔记（3）：数据存储与规整化
 category: 编程语言
 catalog: true
+lang: ch
 tags: 
     - 2017
     - Python

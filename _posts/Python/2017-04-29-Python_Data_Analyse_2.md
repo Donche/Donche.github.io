@@ -3,6 +3,7 @@ layout: post
 title: Python数据分析笔记（2）：pandas 入门
 category: 编程语言
 catalog: true
+lang: ch
 tags: 
     - 2017
     - Python

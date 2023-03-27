@@ -4,6 +4,7 @@ title: PageRank 与基于图的推荐算法
 category: 算法
 catalog: true
 mathjax: true
+lang: ch
 tags: 
     - 2017
     - 算法

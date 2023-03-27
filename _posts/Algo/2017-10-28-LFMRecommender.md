@@ -4,6 +4,7 @@ title: 隐语义模型（LFM）推荐算法
 category: 算法
 catalog: true
 mathjax: true
+lang: ch
 tags: 
     - 2017
     - 算法

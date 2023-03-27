@@ -2,6 +2,7 @@
 layout: post
 title: 第一篇
 category: 闲杂事件
+lang: ch
 tags: 
     - 2017
     - 闲杂

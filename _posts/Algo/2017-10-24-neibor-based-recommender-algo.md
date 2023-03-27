@@ -4,6 +4,7 @@ title: 基于邻域的推荐算法
 category: 算法
 catalog: true
 mathjax: true
+lang: ch
 tags: 
     - 2017
     - 算法

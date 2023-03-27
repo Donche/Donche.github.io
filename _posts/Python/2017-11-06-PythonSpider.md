@@ -3,6 +3,7 @@ layout: post
 title: 手写豆瓣爬虫爬到了八万多个专辑信息
 category: 爬虫
 catalog: true
+lang: ch
 tags: 
     - 2017
     - Python
