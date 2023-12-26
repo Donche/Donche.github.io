@@ -75,7 +75,7 @@ date: "2023-12-25"
 
 关于Sam Altman，我看了很多他和Paul Graham的关于创业的公开课，而且我最近几个月还时不时会自言自语他twitter上发过的一句话：“[slowness anywhere justifies slowness everywhere](https://twitter.com/sama/status/1345140364995227648)”。很简单的一句话，但是它可以解决的问题确实是很超出想象的，也让我在很多没有动力的时候咬牙接着埋头干活。Sam就像是没有精神危机而且情绪更平静的Elon Musk一样，也是智商超高的工作狂。让我对他开始敬佩的其实是Paul Graham在博客文章 [Five Founders](https://www.paulgraham.com/5founders.html)里对他的评价：“...Sam Altman can't be stopped by such flimsy rules. If he wants to be on this list, he's going to be. ...But there are a few people with such force of will that they're going to get whatever they want.”
 
-我也不知道是先有创业的想法在先，然后为了创业成功然后主动喂自己鸡汤给自己洗脑在后呢， 还是先试喜欢上这种激进有目的性的做事风格，然后才下定决心要创业的。但是结果是，我比以前更有决心也更有毅力了。这里再记录一下David  Goggins的一句话，不知道为什么，每次听到他说这句话，我都会感觉充满动力："I said to myself, who on this fucking Earth would still be going right now. You are. You gotta be the hardest motherfucker on the planet. Is it true? I don't give a fuck."
+我也不知道是先有创业的想法在先，然后为了创业成功然后主动喂自己鸡汤给自己洗脑在后呢， 还是先喜欢上这种激进有目的性的做事风格，然后才下定决心要创业的。但是结果是，我比以前更有决心也更有毅力了。这里再记录一下David  Goggins的一句话，不知道为什么，每次听到他说这句话，我都会感觉充满动力："I said to myself, who on this fucking Earth would still be going right now. You are. You gotta be the hardest motherfucker on the planet. Is it true? I don't give a fuck."
 
 ![Life is pain](img/life_is_pain.jpg)
 <p style="text-align: center;"><i>人生就是痛苦——认清形势，放弃幻想<br></i></p>
@@ -105,7 +105,7 @@ date: "2023-12-25"
 
 ---
 
-今年看书明显比之前少了很多，年初定下的25本的看书计划只完成了不到一半，甚至直到现在我的《罪与罚》还没有看完。当然主要是因为心态的变化，所有心思都在工作上的时候，确实很难有闲情逸致看小说或者写作了。但我感觉可能等我熟悉这种工作强度和压力的时候，看书的习惯会重新捡起来。
+今年看书明显比之前少了很多，年初定下的25本的看书计划只完成了不到一半，甚至直到现在我的《罪与罚》还没有看完。当然主要是因为心态的变化，所有心思都在工作上的时候，确实很难有闲情逸致看小说或者写作了。但我感觉可能等我熟悉这种工作强度和压力的时候，看书的习惯会重新捡起来。而且我依然坚持了看原著的习惯，如果原著语言不是中英法之一的话，我会选择与原著语言最接近的语言，或者翻译质量最高的语言（比如《罪与罚》我看的是英译本。英译本相比中译本一个值得一提的好处是不太容易记错人名……）。
 
 今年看的书在思想上对我影响最大的是Nassim Nicholas Taleb的两本：《Antifragile: Things That Gain from Disorder》和《Skin in the Game: The Hidden Asymmetries in Daily Life》。在这之前，我对逻辑推理无限支持，而且喜欢“认死理”。这种方法在和人（或者自己）辩论的时候尤其有用：就像苏格拉底经常用逻辑推理把人说得哑口无言一样。后来看了这两本书我才发现苏格拉底的论证逻辑有一些根本的问题——他总是假设对本质的深入理解是操作那些事物的前提，这样的前提无疑是错误的：人并不需要明白空气的本质是什么便可以呼吸。
 
@@ -113,7 +113,7 @@ date: "2023-12-25"
 
 在这种无法完全了解一个事情影响的全貌的时候，一些经验式的方法（比如中医）反倒比更准确更接近本质方法（比如现代医学）更有效——这就像是在解决大规模的复杂问题的时候，很多启发式的算法（heuristics）要比准确算法更有效。这并不说明哪个更高级，只是各有应用场景：准确方法在研究透彻后通常会有更好的效果和更少的副作用，而经验式的方法更适合用于解决极其复杂系统上已有实践经验的问题，然而它的副作用却很难被估计。
 
-尤其是他提到的林迪效应（Lindy effect），让我对很多传统的看法还有对科技的认识有了很大的变化：对于一些不会自然消亡的东西，比如一种技术、一个想法，它们的预期寿命和它们目前已经存在的时间成正比。比如我以前觉得宗教、迷信、中医等基于经验的知识体系会随着科学的发展和普及在几百年内逐渐消失，但现在回想起来，我在这方面的认识确实很幼稚。总的来说他的书对我很有价值（即使他废话很多），因为这并不是我以前很推崇的思考方式。打算之后再多看几本。
+尤其是他提到的林迪效应（Lindy effect），让我对很多传统的看法还有对科技的认识有了很大的变化：对于一些不会自然消亡的东西，比如一种技术、一个想法，它们的预期寿命和它们目前已经存在的时间成正比。比如我以前觉得宗教、迷信、中医等基于经验的知识体系会随着科学的发展和普及在几百年内逐渐消失，但现在回想起来，我在这方面的认识确实很幼稚。总的来说他的书对我很有价值（即使他废话很多），因为这并不是我以前习惯的思考方式。打算之后再多看几本。
 
 ![Yeah that's also true](img/yeah_true.jpg)
 <p style="text-align: center;"><i>我们认为的真相往往是片面的——承认这一点是进步的基础。<br></i></p>
@@ -122,7 +122,7 @@ date: "2023-12-25"
 
 ---
 
-今年听歌上延续了去年前卫摇滚的趋势，但是听了很多很多的Jethro Tull。他们的《Wind-Up》不知为什么总让我想起陀思妥耶夫斯基的《卡拉马佐夫兄弟》：
+今年听歌上延续了去年前卫摇滚的趋势，但是听了很多很多的Jethro Tull。《Thick as a Brick》取代了Yes的《Close to the Edge》成为我最喜欢的前卫摇滚专辑（如果不考虑Pink Floyd的话）。他们的《Wind-Up》不知为什么总让我想起陀思妥耶夫斯基的《卡拉马佐夫兄弟》：
 
 
 <p style="text-align: center;"><i>And I asked this God a question  <br>
@@ -135,7 +135,7 @@ You had the whole damn thing all wrong  <br>
 He's not the kind you have to wind up on Sundays<br></i>
       &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; - Jethro Tull, <i>Wind-Up</i></p>
 
-虽然前卫摇滚听了不少，循环最多的歌竟然是Lake of Tears的《Sorcerers》。与此同时我还疯狂循环了很久的《明天会更好》——帮我在精神即将崩溃的时候保持了希望。今年的金属也听了不少，一遍甩头一遍疯狂写代码，效率很不错。
+虽然前卫摇滚听了不少，循环最多的歌竟然是Lake of Tears的《Sorcerers》。与此同时我还疯狂循环了很久的《明天会更好》——帮我在精神即将崩溃的时候保持了希望。今年的金属也回顾了不少，捡起了中学时候喜欢的各种金属乐队（Rammstein，Megadeth，Trivium，Lake of Tears，还有这几年偶尔会听的Gojira，Ningen Isu），一遍甩头一遍疯狂写代码，效率很不错。
 
 值得一提的是《最后生还者》改编的剧真的很好看，尤其是第三集讲Bill和Frank的爱情故事，是我看过的少有的能让我这种钢铁直男也心动的gay片剧情。其他有很多集也都很震撼，确实是我的口味。心心念念想要玩游戏，但是我连游戏机也没有。希望明年可以实现游戏自由？
 
