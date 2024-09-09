@@ -45,15 +45,19 @@ languages:
           # Title: "Mememe"
           Content: >
 
-              - 我目前是LAMSADE(巴黎九大 - 巴黎文理研究大学)与Orange Labs的三年级博士生。我的研究课题是使用启发式学习进行电信网络优化。更具体地说，我正在使用蒙特卡洛搜索和强化学习来解决电信网络中的Metric Optimization问题和Segment Routing Waypoint Optimization问题。
+              - 我去年从LAMSADE(巴黎九大 - 巴黎文理研究大学)与Orange Labs合作的博士项目中毕业。我的研究课题是使用启发式学习进行电信网络优化。更具体地说，我使用蒙特卡洛搜索和强化学习来解决电信网络中的Metric Optimization问题和Segment Routing Waypoint Optimization问题。
               
               - 
 
-              - 我在巴黎文理研究大学（PSL）获得了人工智能、系统、数据方向的硕士学位，这是一个巴黎九大、巴黎高等师范和巴黎高等矿业学院联合举办的硕士项目，我是这个项目启动后的第一届学生。
+              - 在博士学位之前，我在巴黎文理研究大学（PSL）获得了人工智能、系统、数据方向的硕士学位，这是一个巴黎九大、巴黎高等师范和巴黎高等矿业学院联合举办的硕士项目，我是这个项目启动后的第一届学生。
 
               - 
               
               - 这是我发表的一些的[学术文章](https://www.researchgate.net/profile/Chen-Dang-2)。
+              
+              - 
+              
+              - 我正在开发 [SavoirX](https://savoirx.ai/)，一个帮助提高DELF考试法语写作能力的网站。
 
         menu:
             main:
@@ -111,13 +115,13 @@ params:
         # Title: "PaperMod"
         Content: >
 
-            - I am currently a third year PhD candidate at LAMSADE(Paris Dauphine University - PSL) in collaboration with Orange Labs
+            - I recently completed my PhD at LAMSADE (Paris Dauphine University - PSL) in collaboration with Orange Labs.
 
             - 
 
-            - My research topic is **Heuristics Learning for Network Optimization Problem**. 
+            - My research topic was **Heuristics Learning for Network Optimization Problem**. 
             
-            - More specifically, I'm using Monte Carlo Search and Reinforcement Learning to solve the weight setting problem and segment routing problem in telecommunication networks
+            - More specifically, I used Monte Carlo Search and Reinforcement Learning to solve the weight setting problem and segment routing problem in telecommunication networks
 
             - 
 
@@ -126,6 +130,10 @@ params:
             - 
 
             - Here are some of my [publications](https://www.researchgate.net/profile/Chen-Dang-2)
+            
+            - 
+
+            - Currently working on [SavoirX](https://savoirx.ai/), a website to improve French writing skills for the DELF exam.
 
     # label:
     #     text: "Home"
