@@ -1,6 +1,6 @@
 baseURL: "https://Donche.github.io/" # if your site is in 'https', then make sure your base url isn't written using 'http' otherwise your sitemap would contain http (as opposeed to https) URLs. This would affect Google indexing of your URLs.
 title: Chen DANG
-paginate: 5
+paginate: 10
 theme: PaperMod
 
 enableInlineShortcodes: true
@@ -53,7 +53,7 @@ languages:
 
               - 
               
-              - 这是我发表的一些的[学术文章](https://www.researchgate.net/profile/Chen-Dang-2)。
+              - 这是我发表的一些的[学术文章](https://scholar.google.com/citations?user=-0E97lkAAAAJ&hl)。
               
               - 
               
@@ -61,15 +61,18 @@ languages:
 
         menu:
             main:
+                - name: 全部文章
+                  url: archives/
+                  weight: 5
                 - name: 博客
                   url: blog/
-                  weight: 5
+                  weight: 10
                 - name: 杂文
                   url: /essay/
-                  weight: 10
+                  weight: 15
                 - name: 虚构类
                   url: fiction/
-                  weight: 15
+                  weight: 20
 
 outputs:
     home:
@@ -129,7 +132,7 @@ params:
 
             - 
 
-            - Here are some of my [publications](https://www.researchgate.net/profile/Chen-Dang-2)
+            - Here are some of my [publications](https://scholar.google.com/citations?user=-0E97lkAAAAJ&hl)
             
             - 
 
