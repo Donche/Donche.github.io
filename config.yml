@@ -97,6 +97,7 @@ params:
     ShowBreadCrumbs: true
     ShowCodeCopyButtons: true
     ShowRssButtonInSectionTermList: false
+    ShowAllPagesInArchive: true
     ShowToc: true
     # comments: false
     images: ["papermod-cover.png"]
